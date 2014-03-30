@@ -1,13 +1,65 @@
----
-layout: default
-title: Your New Jekyll Site
----
-
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>
+			XC-Zhang's GitHub Page
+		</title>
+		<style>
+			div#container
+			{
+				margin-left : auto;
+				margin-right : auto;
+				width : 800px;
+				height : 600px;
+				text-align : center;
+				font-family : "Segoe UI";
+				font-size : 150%;
+				color : #999999;
+			}
+			div#blank
+			{
+				height : 200px;
+			}
+			div#title
+			{
+				font-size : 300%;
+				height : 200px;
+				color : #333399;
+				text-shadow : 2px 2px 1px #999999;
+			}
+			div.lang
+			{
+				width : 400px;
+				text-align : center;
+				float : left;
+			}
+			a:link, a:visited
+			{
+				color : #999999;
+			}
+			a:hover
+			{
+				color : #333399;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="blank"></div>
+			<div id="title">
+				<strong>Welcome!</strong>
+			</div>
+			<p>Select Language</p>
+			<a href="index_en.html">
+				<div id="Enter_EN" class="lang">
+					ENGLISH
+				</div>
+			</a>
+			<a href="index_cn.html">
+				<div id="Enter_CN" class="lang">
+					CHINESE
+				</div>
+			</a>
+		</div>
+	</body>
+</html>
