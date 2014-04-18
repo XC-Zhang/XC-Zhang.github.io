@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>AJAX Test</title>
+		<script text="text/javascript">
+			var xhr;
+			window.onload = function () {
+				// Create XMLHttpRequest object
+				if (window.XMLHttpRequest) {
+					// Code for IE7+, Firefox, Chrome, Opera, Safari
+					xhr = new XMLHttpRequest();
+				} else {
+					// Code for IE6, IE5
+					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				if (xhr) {
+					xhr.onreadystatechange = function () {
+						if (xhr.readyState == 4 && xhr.status == 200) {
+							var contents = JSON.parse(xhr.responseText).content;
+							var c = document.getElementById("container");
+							c.innerHTML = "";
+							for (var i = 0; i < contents.length; i++) {
+								var img = document.createElement("img");
+								img.src = contents[i].pic;
+								var t = document.createElement("div");
+								t.appendChild(img);
+								c.appendChild(t);
+							}
+						}
+					}
+				}
+			}
+			function SendRequest() {
+				if (!xhr) {
+					alert("XMLHttpRequest object is not ready.");
+					return;
+				}
+				xhr.open("GET", "ajax_test.json", true);
+				xhr.send();
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="SendRequest()">Click to send a request</button>
+		<div id="container"></div>
+	</body>
+</html>
