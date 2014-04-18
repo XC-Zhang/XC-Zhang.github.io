@@ -16,7 +16,7 @@
 				if (xhr) {
 					xhr.onreadystatechange = function () {
 						if (xhr.readyState == 4 && xhr.status == 200) {
-							var contents = JSON.parse(xhr.responseText).content;
+							var contents = JSON.parse(xhr.responseText).contents;
 							var c = document.getElementById("container");
 							c.innerHTML = "";
 							for (var i = 0; i < contents.length; i++) {
