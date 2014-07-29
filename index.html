@@ -1,71 +1,55 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>
-			XC-Zhang's GitHub Page
-		</title>
-		<style>
-			body
-			{
-				background-color : #000099;			
+<body>
+<div id="myExcelDiv"></div>
+<script type="text/javascript" src="http://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>
+<script type="text/javascript">
+	/*
+	 * This code uses the Microsoft Office Excel Javascript object model to programmatically insert the
+	 * Excel Web App into a div with id=myExcelDiv. The full API is documented at
+	 * http://msdn.microsoft.com/zh-CN/library/hh315812.aspx. There you can find out how to programmatically get
+	 * values from your Excel file and how to use the rest of the object model. 
+	 */
+
+	// Use this file token to reference 071班去向表.xlsx in Excel's APIs
+	var fileToken = "SDCA3EDBFA78797504!3713/-3873416760682515196/t=0&s=0&v=!AMtmnqJ_zxbA9Pg";
+
+	// run the Excel load handler on page load
+	if (window.attachEvent) {
+		window.attachEvent("onload", loadEwaOnPageLoad);
+	} else {
+		window.addEventListener("DOMContentLoaded", loadEwaOnPageLoad, false);
+	}
+
+	function loadEwaOnPageLoad() {
+		var myExcelDiv = document.getElementById("myExcelDiv");
+		myExcelDiv.style.width = (window.screen.width - 32) + "px";
+		myExcelDiv.style.height = (window.screen.height - 128) + "px";
+
+		var props = {
+			uiOptions: {
+				showDownloadButton: false,
+				showRowColumnHeaders: false,
+				showParametersTaskPane: false
+			},
+			interactivityOptions: {
+				allowTypingAndFormulaEntry: false,
+				allowParameterModification: false,
+				allowSorting: false,
+				allowFiltering: false,
+				allowPivotTableInteractivity: false
 			}
-			div#container
-			{
-				margin-left : auto;
-				margin-right : auto;
-				width : 800px;
-				height : 600px;
-				text-align : center;
-				font-family : "Segoe UI";
-				font-size : 150%;
-				color : #FFFFFF;
-			}
-			div#blank
-			{
-				height : 200px;
-			}
-			div#title
-			{
-				font-size : 300%;
-				height : 200px;
-				color : #FFFFFF;
-			}
-			div.lang
-			{
-				width : 400px;
-				text-align : center;
-				float : left;
-			}
-			a:link, a:visited
-			{
-				color : #555555;
-			}
-			a:hover
-			{
-				color : #FFFFFF;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="container">
-			<div id="blank"></div>
-			<div id="title">
-				<strong>Welcome!</strong>
-			</div>
-			<p>Select Language</p>
-			<a href="index_en.html">
-				<div id="Enter_EN" class="lang">
-					ENGLISH
-				</div>
-			</a>
-			<a href="index_cn.html">
-				<div id="Enter_CN" class="lang">
-					CHINESE
-				</div>
-			</a>
-			<a href="ajax_test.html">
-				AJAX Test
-			</a>
-		</div>
-	</body>
+		};
+
+		Ewa.EwaControl.loadEwaAsync(fileToken, "myExcelDiv", props, onEwaLoaded);
+	}
+
+	function onEwaLoaded(result) {
+		/*
+		 * Add code here to interact with the embedded Excel web app.
+		 * Find out more at http://msdn.microsoft.com/zh-CN/library/hh315812.aspx.
+		 */
+	}
+</script>
+</body>
 </html>
